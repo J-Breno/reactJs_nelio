@@ -12,3 +12,6 @@ yarn create vite [nome-do-projeto] --template react-ts
 yarn
 ```
 
+## Componentes react
+
+Um componente react é uma função, ele possui dados, comportamentos e representação visual
