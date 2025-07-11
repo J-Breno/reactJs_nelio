@@ -1,7 +1,9 @@
+import "./styles.css";
+
 export default function Button() {
   return (
     <>
-      <div>Comprar</div>
+      <div className="ct-button">Comprar</div>
     </>
   );
 }
