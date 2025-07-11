@@ -8,7 +8,7 @@ export default function Catalog() {
         <>
         <Header />
         <main>
-            <section>
+            <section className='cardCar'>
                 <h2>Venha nos visitar</h2>
                 <CardCar />
                 <CardCar />
@@ -22,7 +22,7 @@ export default function Catalog() {
                 <CardComments />
             </section>
         </main>
-        
+
         </>
     );
 }

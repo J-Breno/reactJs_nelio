@@ -1,23 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
 :root {
-  --dsc-color-bg-primary: #e8e8e8;
-  --dsc-color-bg-secondary: #ffe500;
-  --dsc-color-bg-tertiary: #636363;
-  --dsc-color-bg-quaternary: #0caf1d;
+  --dt-color-bg-primary: #3c9af0;
+  --dt-color-bg-secundary: #fff;
+  --dt-color-bg-tertiary: #c8c8c8;
 
-  --dsc-color-card-bg: #fff;
-  --dsc-color-card-border: #d9d9d9;
-
-  --dsc-color-btn-primary: #3483fa;
-  --dsc-color-btn-inverse: #fff;
-
-  --dsc-color-font-primary: #636363;
-  --dsc-color-font-secondary: #0caf1d;
-  --dsc-color-font-tertiary: #fff;
-  --dsc-color-font-placeholder: #d9d9d9;
-
-  --dsc-color-error: #f33;
+  --dt-color-font-primary: #5e5e5e;
+  --dt-color-font-secundary: #3c9af0;
+  --dt-color-font-tertiary: #fff;
 }
 
 * {
@@ -35,9 +25,13 @@ a:hover {
 
 html,
 body {
-  background-color: var(--dsc-color-bg-primary);
+  background-color: var(--dt-color-bg-secundary);
 }
 
 main {
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

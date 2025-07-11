@@ -1,0 +1,8 @@
+header {
+    background-color: var(--dt-color-bg-primary);
+    color: var(--dt-color-font-tertiary);
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    padding: 17px 0;
+}

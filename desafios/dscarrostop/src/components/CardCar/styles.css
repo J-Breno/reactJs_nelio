@@ -1,0 +1,5 @@
+div.cardTop-container {
+    width: 746px;
+    height: 352px;
+    border: 1px solid var(--dt-color-bg-primary);
+}

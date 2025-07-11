@@ -15,3 +15,9 @@ yarn
 ## Componentes react
 
 Um componente react é uma função, ele possui dados, comportamentos e representação visual
+
+## Props
+
+Props podem ser entendidas como parâmetos do componente React.
+
+
