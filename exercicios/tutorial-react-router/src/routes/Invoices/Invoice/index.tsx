@@ -18,7 +18,16 @@ export default function Invoice() {
                         {invoice.name}: {invoice.number}
                     </p>
                     <p>Due Date: {invoice.due}</p>
-                    
+                    <p>
+                        <button
+                            onClick={() => {
+                                deleteInvoice(invoice.number);
+                                navigate("/invoices" + location.search);
+                            }}
+                        >
+                            Delete
+                        </button>
+                    </p>
                 </main>
 
             }
