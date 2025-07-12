@@ -5,11 +5,12 @@ import Expenses from "./routes/Expenses/index.tsx";
 import Invoices from "./routes/Invoices/index.tsx";
 
 createRoot(document.getElementById("root")!).render(
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
         <Route path="expenses" element={<Expenses />} />
         <Route path="invoices" element={<Invoices />} />
-      </Routes>
-    </BrowserRouter>
+      </Route>
+    </Routes>
+  </BrowserRouter>
 );
