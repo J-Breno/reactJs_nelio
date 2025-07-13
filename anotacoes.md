@@ -39,6 +39,8 @@ Hooks são ferramentas que o React dá para você fazer coisas dinâmicas usando
 
 Guarda uma informação (ou “estado”) dentro do seu componente. Tipo: o nome que o usuário digitou,
 se o menu está aberto ou fechado, quantos cliques ele deu, etc.
+É um React hook que permite armazenar estado dentro de um componente;
+O componente é capaz de observar mudanças neste estado, e dai reagir a essas mudanças.
 
 ### useEffect
 
