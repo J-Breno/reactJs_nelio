@@ -21,3 +21,26 @@ Um componente react é uma função, ele possui dados, comportamentos e represen
 Props podem ser entendidas como parâmetos do componente React.
 
 
+## React router
+
+### Instalação
+
+```
+yarn add react-router-dom@6.4.1 @types/react-router-dom@5.3.3
+```
+
+## React hooks
+
+são funções especiais que se comportam em conformidade com o ciclo de vida do React.
+Hooks são como "ganchos" que você pode usar dentro das suas funções no React pra adicionar comportamentos especiai;
+Hooks são ferramentas que o React dá para você fazer coisas dinâmicas usando funções.
+
+### useState
+
+Guarda uma informação (ou “estado”) dentro do seu componente. Tipo: o nome que o usuário digitou,
+se o menu está aberto ou fechado, quantos cliques ele deu, etc.
+
+### useEffect
+
+Executa uma função depois que o componente aparece na tela ou quando algo muda.
+“Quando o componente aparecer, ou quando essa variável mudar, execute essa tarefa aqui!”
