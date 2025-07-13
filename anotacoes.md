@@ -46,3 +46,5 @@ O componente é capaz de observar mudanças neste estado, e dai reagir a essas m
 
 Executa uma função depois que o componente aparece na tela ou quando algo muda.
 “Quando o componente aparecer, ou quando essa variável mudar, execute essa tarefa aqui!”
+Permite executar uma função no momento da criação do componente. Quando um estado do componente muda.
+O useEffect pode observar e reagir a mudanças de estado no componente.
