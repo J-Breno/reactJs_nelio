@@ -48,3 +48,7 @@ Executa uma função depois que o componente aparece na tela ou quando algo muda
 “Quando o componente aparecer, ou quando essa variável mudar, execute essa tarefa aqui!”
 Permite executar uma função no momento da criação do componente. Quando um estado do componente muda.
 O useEffect pode observar e reagir a mudanças de estado no componente.
+
+### Instalação do axios
+
+yarn add axios@0.27.2
