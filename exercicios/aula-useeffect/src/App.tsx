@@ -7,11 +7,10 @@ function App() {
 
   useEffect(()=>{
     setProd(findProduct(productId))
-  }, [])
+  }, [productId])
 
   function handleClick() {
-    setProductId(2);
-    setProd(findProduct(productId));
+    setProductId(2)
   }
 
   return (
