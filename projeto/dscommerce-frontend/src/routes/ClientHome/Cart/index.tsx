@@ -1,25 +1,34 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./styles.css";
 import * as cartService from "../../../services/cart-service";
 import { OrderDTO } from "../../../models/order";
 import { Link } from "react-router-dom";
+import { ContextCartCount } from "../../../utils/context-cart";
 
 export default function Cart() {
   const [cart, setCart] = useState<OrderDTO>(cartService.getCart());
 
+  const { setContextCartCount } = useContext(ContextCartCount);
+
   function handleClearClick() {
     cartService.clearCart();
-    setCart(cartService.getCart());
+    updateCart();
   }
 
   function handleIncreaseItem(productId: number) {
     cartService.increaseItem(productId);
-    setCart(cartService.getCart())
+    setCart(cartService.getCart());
   }
 
   function handleDecreaseItem(productId: number) {
     cartService.decreaseItem(productId);
-    setCart(cartService.getCart())
+    updateCart();
+  }
+
+  function updateCart() {
+    const newCart = cartService.getCart();
+    setCart(newCart);
+    setContextCartCount(newCart.items.length);
   }
 
   return (
@@ -28,7 +37,9 @@ export default function Cart() {
         <section id="cart-container-section" className="dsc-container">
           {cart.items.length === 0 ? (
             <div>
-              <h2 className="dsc-section-title dsc-mb20">Seu carrinho está vazio</h2>
+              <h2 className="dsc-section-title dsc-mb20">
+                Seu carrinho está vazio
+              </h2>
             </div>
           ) : (
             <div className="dsc-card dsc-mb20">
@@ -42,9 +53,19 @@ export default function Cart() {
                     <div className="dsc-cart-item-description">
                       <h3>{item.name}</h3>
                       <div className="dsc-cart-item-quantity-container">
-                        <div onClick={() => handleDecreaseItem(item.productId)} className="dsc-cart-item-quantity-btn">-</div>
+                        <div
+                          onClick={() => handleDecreaseItem(item.productId)}
+                          className="dsc-cart-item-quantity-btn"
+                        >
+                          -
+                        </div>
                         <p>{item.quantity}</p>
-                        <div onClick={() => handleIncreaseItem(item.productId)} className="dsc-cart-item-quantity-btn">+</div>
+                        <div
+                          onClick={() => handleIncreaseItem(item.productId)}
+                          className="dsc-cart-item-quantity-btn"
+                        >
+                          +
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -62,9 +83,11 @@ export default function Cart() {
           <div className="dsc-btn-page-container">
             <div className="dsc-btn dsc-btn-blue">Finalizar pedido</div>
             <Link to={"/catalog"}>
-                <div className="dsc-btn dsc-btn-white">Continuar comprando</div>
+              <div className="dsc-btn dsc-btn-white">Continuar comprando</div>
             </Link>
-            <div onClick={handleClearClick} className="dsc-btn dsc-btn-white">Limpar carrinho</div>
+            <div onClick={handleClearClick} className="dsc-btn dsc-btn-white">
+              Limpar carrinho
+            </div>
           </div>
         </section>
       </main>
