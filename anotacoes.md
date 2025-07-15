@@ -52,3 +52,18 @@ O useEffect pode observar e reagir a mudanças de estado no componente.
 ### Instalação do axios
 
 yarn add axios@0.27.2
+
+## Formulário e requisição de login
+
+### instalaçao biblioteca para form url encode
+
+```
+yarn add qs@6.11.0 @types/qs@6.9.7
+
+```
+
+## Redicionamento fora do componente 
+
+```
+yarn add history@5.3.0
+```

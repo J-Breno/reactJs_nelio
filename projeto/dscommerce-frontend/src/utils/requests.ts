@@ -2,6 +2,7 @@ import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
 import { BASE_URL } from "./system";
 import * as authService from "../services/auth-service";
+import { history } from "./history";
 
 export default function requestBackend(config: AxiosRequestConfig) {
   const headers = config.withCredentials
@@ -33,11 +34,11 @@ axios.interceptors.response.use(
   },
   function (error) {
     if (error.response.status === 401) {
-    //   navigate("/login");
+      history.push("/login");
     }
 
     if (error.response.status === 403) {
-    //   navigate("/login");
+      history.push("/catalog");
     }
     return Promise.reject(error);
   }
