@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { loginRequest } from "../../../services/auth-service";
 import "./styles.css";
 import type { CredentialsDTO } from "../../../models/auth";
 import * as authService from '../../../services/auth-service'
