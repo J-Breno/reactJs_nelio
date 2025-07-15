@@ -11,8 +11,14 @@ export default function Login() {
 
   function handleSubmit(event: any) {
     event.preventDefault();
-
     loginRequest(formData);
+  }
+
+  function handleInputChange(event: any) {
+    const  name = event.target.name;
+    const value = event.target.value;
+
+    setFormData({...formData, [name]: value})
   }
 
   return (
@@ -25,17 +31,23 @@ export default function Login() {
               <div className="dsc-form-controls-container">
                 <div>
                   <input
+                    name="username"
+                    value={formData.username}
                     className="dsc-form-control"
                     type="text"
                     placeholder="Email"
+                    onChange={handleInputChange}
                   />
                   <div className="dsc-form-error"></div>
                 </div>
                 <div>
                   <input
+                    name="password"
+                    value={formData.password}
                     className="dsc-form-control"
                     type="password"
                     placeholder="Senha"
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>
