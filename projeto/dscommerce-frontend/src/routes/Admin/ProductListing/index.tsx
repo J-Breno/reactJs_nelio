@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import type { ProductDTO } from "../../../models/product";
 import SearchBar from "../../../components/SearchBar";
 import ButtonNextPage from "../../../components/ButtonNextPage";
+import DaialogInfo from "../../../components/DaialogInfo";
 
 type QueryParams = {
   page: number;
@@ -102,6 +103,7 @@ export default function ProductListing() {
             </div>
           )}
         </section>
+        <DaialogInfo />
       </main>
     </>
   );
