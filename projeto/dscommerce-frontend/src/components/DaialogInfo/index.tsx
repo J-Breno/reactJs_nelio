@@ -5,7 +5,7 @@ type Props = {
   onDaialogClose: Function;
 };
 
-export default function DaialogInfo({ message, onDaialogClose }: Props) {
+export function DaialogInfo({ message, onDaialogClose }: Props) {
   return (
     <>
       <div className="dsc-daialog-background" onClick={() => onDaialogClose()}>

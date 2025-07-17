@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import type { ProductDTO } from "../../../models/product";
 import SearchBar from "../../../components/SearchBar";
 import ButtonNextPage from "../../../components/ButtonNextPage";
-import DaialogInfo from "../../../components/DaialogInfo";
+import { DaialogInfo } from "../../../components/DaialogInfo";
+import { DaialogConfirmation } from "../../../components/DaialogConfirmation";
 
 type QueryParams = {
   page: number;
@@ -17,6 +18,11 @@ export default function ProductListing() {
   const [daialogInfoData, setDaialogInfoData] = useState({
     visible: false,
     message: "Operação com sucesso!",
+  });
+
+  const [daialogConfirmationData, setDaialogConfirmationData] = useState({
+    visible: false,
+    message: "Tem certeza?",
   });
 
   const [queryParams, setQueryParams] = useState<QueryParams>({
@@ -52,7 +58,12 @@ export default function ProductListing() {
   }
 
   function handleDeleteClick() {
-    setDaialogInfoData({ ...daialogInfoData, visible: true });
+    setDaialogConfirmationData({ ...daialogConfirmationData, visible: true });
+  }
+
+  function handleDaialogConfirmationAnswer(answer: boolean) {
+    setDaialogConfirmationData({ ...daialogConfirmationData, visible: false });
+    
   }
 
   return (
@@ -121,6 +132,13 @@ export default function ProductListing() {
           <DaialogInfo
             message={daialogInfoData.message}
             onDaialogClose={handleDaialogInfoClose}
+          />
+        )}
+
+        {daialogConfirmationData.visible && (
+          <DaialogConfirmation
+            message={daialogConfirmationData.message}
+            onDaialogAnswer={handleDaialogConfirmationAnswer}
           />
         )}
       </main>

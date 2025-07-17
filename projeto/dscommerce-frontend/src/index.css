@@ -402,4 +402,7 @@ nav a {
 
 .dsc-daialog-btn-container {
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
