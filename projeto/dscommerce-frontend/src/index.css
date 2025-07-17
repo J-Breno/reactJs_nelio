@@ -202,11 +202,6 @@ nav a {
   cursor: pointer;
 }
 
-
-
-
-
-
 /*-----------------------------------------------------------------*/
 /* form styles */
 
@@ -373,7 +368,7 @@ nav a {
 
 .dsc-daialog-background {
   position: fixed;
-  top: 0; 
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -405,4 +400,8 @@ nav a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+}
+
+.dsc-daialog-btn {
+  width: 100%;
 }

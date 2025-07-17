@@ -22,6 +22,7 @@ export default function ProductListing() {
 
   const [daialogConfirmationData, setDaialogConfirmationData] = useState({
     visible: false,
+    id: 0,
     message: "Tem certeza?",
   });
 
@@ -57,13 +58,23 @@ export default function ProductListing() {
     setDaialogInfoData({ ...daialogInfoData, visible: false });
   }
 
-  function handleDeleteClick() {
-    setDaialogConfirmationData({ ...daialogConfirmationData, visible: true });
+  function handleDeleteClick(id: number) {
+    setDaialogConfirmationData({
+      ...daialogConfirmationData,
+      id: id,
+      visible: true,
+    });
   }
 
-  function handleDaialogConfirmationAnswer(answer: boolean) {
+  function handleDaialogConfirmationAnswer(answer: boolean, id: number) {
+    if (answer) productService.deleteById(id).then(() => {
+        setProducts([]);
+        setQueryParams({ ...queryParams, page: 0 });
+      }).catch(error => {
+        setDaialogInfoData({visible: true, message: `${error.response.data.error}`})
+      });
+
     setDaialogConfirmationData({ ...daialogConfirmationData, visible: false });
-    
   }
 
   return (
@@ -114,7 +125,7 @@ export default function ProductListing() {
                       className="dsc-product-listing-btn"
                       src={deleteIcon}
                       alt="Deletar"
-                      onClick={handleDeleteClick}
+                      onClick={() => handleDeleteClick(product.id)}
                     />
                   </td>
                 </tr>
@@ -137,6 +148,7 @@ export default function ProductListing() {
 
         {daialogConfirmationData.visible && (
           <DaialogConfirmation
+            id={daialogConfirmationData.id}
             message={daialogConfirmationData.message}
             onDaialogAnswer={handleDaialogConfirmationAnswer}
           />

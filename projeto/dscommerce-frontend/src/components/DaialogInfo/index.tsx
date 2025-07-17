@@ -11,7 +11,7 @@ export function DaialogInfo({ message, onDaialogClose }: Props) {
       <div className="dsc-daialog-background" onClick={() => onDaialogClose()}>
         <div className="dsc-dialog-box" onClick={(e) => e.stopPropagation()}>
           <h2>{message}</h2>
-          <div className="dsc-daialog-btn-container" onClick={() => onDaialogClose()}>
+          <div className="dsc-daialog-btn" onClick={() => onDaialogClose()}>
             <ButtonPrimary text="Ok" />
           </div>
         </div>
