@@ -14,6 +14,11 @@ type QueryParams = {
 };
 
 export default function ProductListing() {
+  const [daialogInfoData, setDaialogInfoData] = useState({
+    visible: false,
+    message: "Operação com sucesso!",
+  });
+
   const [queryParams, setQueryParams] = useState<QueryParams>({
     page: 0,
     name: "",
@@ -40,6 +45,14 @@ export default function ProductListing() {
 
   function handleNextPageClick() {
     setQueryParams({ ...queryParams, page: queryParams.page + 1 });
+  }
+
+  function handleDaialogInfoClose() {
+    setDaialogInfoData({ ...daialogInfoData, visible: false });
+  }
+
+  function handleDeleteClick() {
+    setDaialogInfoData({ ...daialogInfoData, visible: true });
   }
 
   return (
@@ -90,6 +103,7 @@ export default function ProductListing() {
                       className="dsc-product-listing-btn"
                       src={deleteIcon}
                       alt="Deletar"
+                      onClick={handleDeleteClick}
                     />
                   </td>
                 </tr>
@@ -103,7 +117,12 @@ export default function ProductListing() {
             </div>
           )}
         </section>
-        <DaialogInfo />
+        {daialogInfoData.visible && (
+          <DaialogInfo
+            message={daialogInfoData.message}
+            onDaialogClose={handleDaialogInfoClose}
+          />
+        )}
       </main>
     </>
   );

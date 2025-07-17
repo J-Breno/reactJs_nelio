@@ -1,14 +1,21 @@
 import ButtonPrimary from "../ButtonPrimary";
 
-export default function DaialogInfo() {
-    return (
-        <>
-            <div className="dsc-daialog-background">
-                <div className="dsc-dialog-box">
-                    <h2>Operação com Sucesso!</h2>
-                    <ButtonPrimary text="Ok"/>
-                </div>
-            </div>
-        </>
-    );
+type Props = {
+  message: string;
+  onDaialogClose: Function;
+};
+
+export default function DaialogInfo({ message, onDaialogClose }: Props) {
+  return (
+    <>
+      <div className="dsc-daialog-background" onClick={() => onDaialogClose()}>
+        <div className="dsc-dialog-box" onClick={(e) => e.stopPropagation()}>
+          <h2>{message}</h2>
+          <div className="dsc-daialog-btn-container" onClick={() => onDaialogClose()}>
+            <ButtonPrimary text="Ok" />
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
