@@ -8,6 +8,8 @@ import SearchBar from "../../../components/SearchBar";
 import ButtonNextPage from "../../../components/ButtonNextPage";
 import { DaialogInfo } from "../../../components/DaialogInfo";
 import { DaialogConfirmation } from "../../../components/DaialogConfirmation";
+import ButtonInverse from "../../../components/ButtonInverse";
+import { useNavigate } from "react-router-dom";
 
 type QueryParams = {
   page: number;
@@ -66,13 +68,26 @@ export default function ProductListing() {
     });
   }
 
+  const navigate = useNavigate()
+
+  function handleNewProductClick() {
+    navigate("/admin/products/create")
+  }
+
   function handleDaialogConfirmationAnswer(answer: boolean, id: number) {
-    if (answer) productService.deleteById(id).then(() => {
-        setProducts([]);
-        setQueryParams({ ...queryParams, page: 0 });
-      }).catch(error => {
-        setDaialogInfoData({visible: true, message: `${error.response.data.error}`})
-      });
+    if (answer)
+      productService
+        .deleteById(id)
+        .then(() => {
+          setProducts([]);
+          setQueryParams({ ...queryParams, page: 0 });
+        })
+        .catch((error) => {
+          setDaialogInfoData({
+            visible: true,
+            message: `${error.response.data.error}`,
+          });
+        });
 
     setDaialogConfirmationData({ ...daialogConfirmationData, visible: false });
   }
@@ -84,7 +99,9 @@ export default function ProductListing() {
           <h2 className="dsc-section-title dsc-mb20">Cadastro de produtos</h2>
 
           <div className="dsc-btn-page-container dsc-mb20">
-            <div className="dsc-btn dsc-btn-white">Novo</div>
+            <div onClick={handleNewProductClick}>
+              <ButtonInverse text="Novo" />
+            </div>
           </div>
 
           <SearchBar onSearch={handleSearch} />
