@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import "./styles.css";
 import * as authService from "../../../services/auth-service";
-import * as forms from '../../../utils/forms'
+import * as forms from "../../../utils/forms";
 import { useNavigate } from "react-router-dom";
 import { ContextToken } from "../../../utils/context-token";
 import FormInput from "../../../components/FormInput";
@@ -37,10 +37,7 @@ export default function Login() {
   function handleSubmit(event: any) {
     event.preventDefault();
     authService
-      .loginRequest({
-        username: formData.username.value,
-        password: formData.password.value,
-      })
+      .loginRequest(forms.toValues(formData))
       .then((response) => {
         authService.saveAccessToken(response.data.access_token);
         setContextTokenPayload(authService.getAccessTokenPayload());
