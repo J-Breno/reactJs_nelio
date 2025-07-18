@@ -9,6 +9,17 @@ export function toValues(inputs: any) {
     for(let name in inputs) {
         data[name] = inputs[name].value;
     }
-    
+
     return data;
+}
+
+export function updateAll(inputs: any, newValues: any) {
+    const newInputs: any = {
+    }
+
+    for(let name in inputs) {
+        newInputs[name] = {...inputs[name], value: newValues[name]};
+    }
+
+    return newInputs;
 }
