@@ -41,13 +41,12 @@ export default function ProductForm() {
   function handleInputChange(event: any) {
     const name = event.target.name;
     const value = event.target.value;
-
-    setFormData(forms.update(formData, name, value));
+    const dataUpdated = forms.update(formData, name, value);
+    const dataValidated = forms.validate(dataUpdated, name);
+    setFormData(dataValidated);
   }
 
   useEffect(() => {
-    const obj = forms.validate(formData, "price");
-
     if (isEditing) {
       productService.findById(Number(params.productId)).then((response) => {
         const newFormData = forms.updateAll(formData, response.data);
@@ -69,6 +68,7 @@ export default function ProductForm() {
                     className="dsc-form-control"
                     onChange={handleInputChange}
                   />
+                  <div className="dsc-form-error">{formData.name.message}</div>
                 </div>
                 <div>
                   <FormInput
@@ -76,6 +76,7 @@ export default function ProductForm() {
                     className="dsc-form-control"
                     onChange={handleInputChange}
                   />
+                  <div className="dsc-form-error">{formData.price.message}</div>
                 </div>
                 <div>
                   <FormInput
