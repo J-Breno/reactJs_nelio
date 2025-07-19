@@ -39,16 +39,13 @@ export default function ProductForm() {
   });
 
   function handleInputChange(event: any) {
-    const name = event.target.name;
-    const value = event.target.value;
-    const dataUpdated = forms.update(formData, name, value);
-    const dataValidated = forms.validate(dataUpdated, name);
-    setFormData(dataValidated);
+    setFormData(
+      forms.updateAndValidate(formData, event.target.name, event.target.value)
+    );
   }
 
   function handleInputTurnDirty(name: string) {
-    const newFormData = forms.toDirty(formData, name);
-    setFormData(newFormData);
+    setFormData(forms.dirtyAndValidate(formData, name));
   }
 
   useEffect(() => {
