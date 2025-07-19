@@ -39,7 +39,17 @@ export function deleteById(id: number) {
 export function updateRequest(obj: ProductDTO) {
   const config: AxiosRequestConfig = {
     method: "PUT",
-    url: `products/${obj.id}`,
+    url: `/products/${obj.id}`,
+    withCredentials: true,
+    data: obj,
+  };
+  return requestBackend(config);
+}
+
+export function insertRequest(obj: ProductDTO) {
+  const config: AxiosRequestConfig = {
+    method: "POST",
+    url: `/products`,
     withCredentials: true,
     data: obj,
   };

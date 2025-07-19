@@ -106,13 +106,17 @@ export default function ProductForm() {
       return;
     }
     const requestBody = forms.toValues(formData);
-    if(isEditing) {
+    if (isEditing) {
       requestBody.id = params.productId;
     }
 
-    productService.updateRequest(requestBody).then(() => {
-      navigate("/admin/products")
-    })
+    const request = isEditing
+      ? productService.updateRequest(requestBody)
+      : productService.insertRequest(requestBody);
+
+    request.then(() => {
+      navigate("/admin/products");
+    });
   }
   return (
     <>
