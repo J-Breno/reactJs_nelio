@@ -4,12 +4,18 @@ import { useEffect, useState } from "react";
 import FormInput from "../../../components/FormInput";
 import * as forms from "../../../utils/forms";
 import * as productService from "../../../services/product-service";
+import * as categoryService from "../../../services/category-service";
+
 import FormTextArea from "../../../components/FormTextarea";
+import Select from "react-select";
+import type { CategoryDTO } from "../../../models/category";
 
 export default function ProductForm() {
   const params = useParams();
 
   const isEditing = params.productId !== "create";
+
+  const [categories, setCategories] = useState<CategoryDTO>([]);
 
   const [formData, setFormData] = useState<any>({
     name: {
@@ -42,7 +48,6 @@ export default function ProductForm() {
       placeholder: "Imagem",
     },
     description: {
-      
       value: "",
       id: "description",
       name: "description",
@@ -52,7 +57,7 @@ export default function ProductForm() {
         return /^.{10,}$/.test(value);
       },
       message: "A descrição deve ter pelo menos 10 caracteres",
-    }
+    },
   });
 
   function handleInputChange(event: any) {
@@ -64,6 +69,12 @@ export default function ProductForm() {
   function handleInputTurnDirty(name: string) {
     setFormData(forms.dirtyAndValidate(formData, name));
   }
+
+  useEffect(() => {
+    categoryService.findAllRequest().then((response) => {
+      setCategories(response.data);
+    });
+  }, []);
 
   useEffect(() => {
     if (isEditing) {
@@ -108,13 +119,18 @@ export default function ProductForm() {
                   />
                 </div>
                 <div>
+                  <Select options={categories} isMulti getOptionLabel={(obj) => obj.name} getOptionValue={(obj) => String(obj.id)}/>
+                </div>
+                <div>
                   <FormTextArea
                     {...formData.description}
                     className="dsc-form-control dsc-textarea"
                     onChange={handleInputChange}
                     onTurnDirty={handleInputTurnDirty}
                   />
-                  <div className="dsc-form-error">{formData.description.message}</div>
+                  <div className="dsc-form-error">
+                    {formData.description.message}
+                  </div>
                 </div>
               </div>
 
