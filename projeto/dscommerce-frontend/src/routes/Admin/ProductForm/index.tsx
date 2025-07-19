@@ -98,7 +98,11 @@ export default function ProductForm() {
   function handleSubmit(e: any) {
     e.preventDefault();
 
-    
+    const formDataValidated = forms.dirtyAndValidateAll(formData)
+    if(forms.hasAnyInvalid(formDataValidated)) {
+      setFormData(formDataValidated)
+      return;
+    }
   }
   return (
     <>
