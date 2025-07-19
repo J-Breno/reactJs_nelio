@@ -130,6 +130,7 @@ export default function ProductForm() {
                 <div>
                   <FormSelect
                     {...formData.categories}
+                    className="dsc-form-control"
                     onChange={(obj: any) => {
                       const newFormData = forms.updateAndValidate(
                         formData,
@@ -144,6 +145,9 @@ export default function ProductForm() {
                     getOptionLabel={(obj: any) => obj.name}
                     getOptionValue={(obj: any) => String(obj.id)}
                   />
+                  <div className="dsc-form-error">
+                    {formData.categories.message}
+                  </div>
                 </div>
                 <div>
                   <FormTextArea
